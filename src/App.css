@@ -1,0 +1,5 @@
+/* App-specific styles - kept minimal since we use Tailwind */
+
+#root {
+  width: 100%;
+}
