@@ -25,6 +25,26 @@ const formatTime = (time) => {
 };
 
 /**
+ * Adds 30 minutes to a time slot to get end time
+ * (e.g., "10:30" -> "11:00")
+ */
+const getEndTime = (time) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  let endMinutes = minutes + 30;
+  let endHours = hours;
+  
+  if (endMinutes >= 60) {
+    endMinutes -= 60;
+    endHours += 1;
+  }
+  if (endHours >= 24) {
+    endHours = 0;
+  }
+  
+  return `${endHours.toString().padStart(2, '0')}:${endMinutes.toString().padStart(2, '0')}`;
+};
+
+/**
  * Groups consecutive time slots for better display
  */
 const groupTimeSlots = (slots) => {
@@ -78,7 +98,7 @@ function DayColumn({ day, slots }) {
               {group.length === 1 ? (
                 formatTime(group[0])
               ) : (
-                `${formatTime(group[0])} - ${formatTime(group[group.length - 1])}`
+                `${formatTime(group[0])} - ${formatTime(getEndTime(group[group.length - 1]))}`
               )}
             </div>
           ))}
