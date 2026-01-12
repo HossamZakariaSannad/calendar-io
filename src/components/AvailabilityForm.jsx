@@ -77,7 +77,7 @@ export default function AvailabilityForm({ onSubmit, loading }) {
         {/* Submit Button */}
         <Button 
           type="submit" 
-          className="w-full" 
+          className="w-full text-sm sm:text-base" 
           loading={loading}
           disabled={!description.trim() || !tutorId.trim()}
         >
@@ -86,7 +86,7 @@ export default function AvailabilityForm({ onSubmit, loading }) {
       </form>
 
       {loading && (
-        <Alert variant="info" className="mt-4">
+        <Alert variant="info" className="mt-4 text-xs sm:text-sm">
           Processing your availability description with AI...
         </Alert>
       )}

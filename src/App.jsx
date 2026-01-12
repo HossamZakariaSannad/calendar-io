@@ -52,16 +52,16 @@ function App() {
       <Header />
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 pb-12">
+      <main className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 pb-8 sm:pb-12">
         {/* Status Message */}
         {message && (
-          <Alert variant={message.type} className="mb-6">
+          <Alert variant={message.type} className="mb-4 sm:mb-6 text-xs sm:text-sm">
             {message.text}
           </Alert>
         )}
 
         {/* Two-Column Layout */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-6 sm:mb-8">
           {/* Input Form */}
           <AvailabilityForm 
             onSubmit={generateCalendar}

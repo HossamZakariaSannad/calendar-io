@@ -80,31 +80,33 @@ function DayColumn({ day, slots }) {
   const groups = groupTimeSlots(slots);
   
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 min-h-[120px]">
-      <h3 className="text-sm font-semibold text-gray-700 text-center mb-2">
+    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-5 min-h-[100px] w-full 
+                    hover:border-teal-300 hover:shadow-md transition-all duration-200">
+      <h3 className="text-base sm:text-lg font-semibold text-gray-700 text-center mb-2">
         {displayDay}
       </h3>
-      <p className="text-xs text-gray-400 text-center mb-3">
+      <p className="text-sm text-gray-400 text-center mb-3">
         {slots.length} slots
       </p>
       
       {slots.length > 0 ? (
-        <div className="space-y-1.5 max-h-48 overflow-y-auto">
+        <div className="space-y-2 max-h-60 overflow-y-auto">
           {groups.map((group, i) => (
             <div
               key={i}
-              className="bg-green-50 border border-green-200 rounded px-2 py-1.5 text-xs text-green-700"
+              className="bg-green-50 border border-green-200 rounded-md px-3 py-2 text-sm text-green-700 text-center
+                         hover:bg-green-100 transition-colors duration-150"
             >
               {group.length === 1 ? (
                 formatTime(group[0])
               ) : (
-                `${formatTime(group[0])} - ${formatTime(getEndTime(group[group.length - 1]))}`
+                <div className="leading-relaxed">{formatTime(group[0])} - {formatTime(getEndTime(group[group.length - 1]))}</div>
               )}
             </div>
           ))}
         </div>
       ) : (
-        <p className="text-xs text-gray-300 text-center italic">No slots</p>
+        <p className="text-sm text-gray-300 text-center italic mt-4">No slots</p>
       )}
     </div>
   );
@@ -154,7 +156,7 @@ export default function CalendarPreview({
           <StatsDisplay stats={stats} />
 
           {/* Week Grid */}
-          <div className="grid grid-cols-7 gap-2 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 mb-6">
             {DAYS.map((day) => (
               <DayColumn
                 key={day}

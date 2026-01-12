@@ -6,9 +6,9 @@ export default function Card({ children, className = '', hover = true, ...props 
   return (
     <div
       className={`
-        bg-white rounded-xl border border-gray-200 p-6 shadow-sm
-        transition-all duration-200
-        ${hover ? 'hover:shadow-md hover:border-gray-300' : ''}
+        bg-white rounded-2xl border-2 border-gray-200 p-4 sm:p-6 lg:p-8 shadow-md
+        transition-all duration-300
+        ${hover ? 'hover:shadow-xl hover:border-teal-300' : ''}
         ${className}
       `}
       {...props}
